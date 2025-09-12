@@ -3,6 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+      try {
+    if (localStorage.getItem('theme') === 'dark') {
+      document.documentElement.setAttribute('data-theme', 'dark');
+    }
+  } catch(e) {}
+    </script>
     <link rel="stylesheet" href="portfolio.css">
     <link rel="stylesheet" type='text/css' 
     href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
@@ -63,7 +70,7 @@
      <nav class="HOME" id="nav-home">
         <ul>
             
-            <a class="home-link" href="portfolio.html">HOME</a>
+            <a class="home-link" href="index.html">HOME</a>
             
         </ul>
     </nav>

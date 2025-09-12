@@ -192,9 +192,9 @@ body{
     align-items: center;
     height: 25px;
     padding: 0 8px;
-    border: #3a0d23 2px solid;
+    border: #82194b 2px solid;
     border-radius: 3px;
-    background: rgba(235, 49, 123, 0.921);
+    background: rgba(235, 49, 123, 1);
     box-shadow: 0 0 16px #ff66b2, 0 0 36px #ff3399, 0 0 56px #ff007f;
     transform: translateY(-1px);
     
