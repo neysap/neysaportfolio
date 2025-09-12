@@ -1,0 +1,343 @@
+.c-projects{
+     display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-top: 60px;
+    padding: 0 16px;
+    gap: 2rem;    
+}
+
+/* make sure the badge block itself centers */
+.c-projects .badge-wrap{
+  align-self: center;
+  margin: 0 auto;
+}
+
+/* Title */
+.projects-title {
+  color: #fff;
+  font-size: 2rem;
+  margin: 0;
+}
+
+/* Each project card */
+.project-card{
+  width: 100%;
+  max-width: 700px;
+  padding: 1.5rem;
+  border: 2px solid var(--accent);
+  border-radius: 10px;
+  background: var(--surface-2);
+  box-shadow:
+    0 0 10px var(--accent),
+    inset 0 0 8px rgba(255,255,255,.12);
+}
+
+/* Project text */
+.project-name {
+  margin: 0 0 0.5rem 0;
+  color: var(--text);
+}
+
+.project-description {
+  max-width: 60ch;        /* nice readable line length */
+  margin: 0.5rem auto 1rem;
+  line-height: 1.6;
+  color: var(--text);
+}
+
+/* Image */
+.project-image {
+  /* display: block; */
+  max-width: 100%;
+  border-radius: 6px;
+  margin: 0.5rem auto 1rem;
+}
+
+/* Link */
+.project-link {
+  color: #fff;
+  text-decoration: underline;
+}
+
+.badge-3d{
+  --size: 140px;
+  --rim: rgba(255,255,255,.75);
+  --g1: var(--accent);
+  --g2: var(--accent-2);
+
+  width: var(--size);
+  height: var(--size);
+  border-radius: 50%;
+  position: relative;
+  display: grid; place-items: center;
+
+  /* let the page bg show through; subtle mist */
+  background: radial-gradient(circle at 40% 35%,
+             rgba(255,255,255,.22),
+             var(--surface-2) 65%, transparent 100%);
+
+  border: 2px solid rgba(255,255,255,.12);
+
+  box-shadow:
+    0 0 10px rgba(255,255,255,.10),
+    0 0 22px var(--g1),
+    0 0 44px var(--g2),
+    inset 0 0 14px rgba(255,255,255,.55);
+
+  filter: drop-shadow(0 10px 22px rgba(0,0,0,.35));
+}
+
+/* tight outer halo */
+.badge-3d::after{
+  content:"";
+  position:absolute; inset:-10%;
+  border-radius:50%;
+  background:
+    radial-gradient(closest-side,
+      rgba(255,255,255,.85),
+      color-mix(in srgb, var(--g1) 85%, transparent) 45%,
+      color-mix(in srgb, var(--g2) 70%, transparent) 70%,
+      transparent 100%);
+  filter: blur(12px);
+  pointer-events:none; z-index:-1;
+}
+
+/* soft rotating sheen */
+.badge-3d::before{
+  content:"";
+  position:absolute; inset:-16%;
+  border-radius:50%;
+  background:
+    conic-gradient(from 0deg,
+      transparent 0deg,
+      rgba(255,255,255,.32) 40deg,
+      color-mix(in srgb, var(--g1) 55%, transparent) 90deg,
+      color-mix(in srgb, var(--g2) 45%, transparent) 140deg,
+      transparent 220deg);
+  filter: blur(16px);
+  animation: badgeSpin 10s linear infinite;
+  pointer-events:none; z-index:-2;
+}
+
+/* icon glow picks up theme */
+.badge-3d .devicon-c-original,
+.badge-3d .devicon-javascript-plain,
+.badge-3d .devicon-python-plain,
+.badge-3d .devicon-java-plain{
+  font-size: calc(var(--size) * 0.48);
+  line-height: 1;
+  -webkit-text-fill-color: transparent;
+  text-shadow:
+    0 -2px 3px rgba(255,255,255,.9),
+    0  2px 4px rgba(0,0,0,.75),
+    0  0 10px var(--g1),
+    0  0 22px var(--g2);
+}
+
+@keyframes badgeSpin { to { transform: rotate(720deg); } }
+
+
+/* @keyframes badgeSpin { to { transform: rotate(460deg); } }
+@keyframes badgeSpin { to { transform: rotate(-960deg); } }
+ */
+
+
+/* === THEME TOKENS === */
+/* Light (current look) */
+:root{
+  --bg-grad: linear-gradient(-60deg, #ff007f, #1a1a1a);
+  --text: #ffffff;
+
+  --accent: #ff66b2;      /* pink glow */
+  --accent-2: #ff3399;
+  --accent-3: #ff007f;
+
+  --surface-1: rgba(255,102,178,0.20); /* buttons/cards */
+  --surface-2: rgba(255,102,178,0.10); /* sections */
+
+  --pill-bg1: rgba(255,102,178,.22);
+  --pill-bg2: rgba(234,117,175,.12);
+  --frame-border: rgba(255,102,178,.45);
+}
+
+/* Dark */
+html[data-theme="dark"]{
+  --bg-grad: linear-gradient(-60deg, #05060a 0%, #0a1030 40%, #1b2563 100%);
+  --text: #e8eefc;
+
+  /* indigo accents */
+  --accent:  #818cf8;   /* indigo-300/400 */
+  --accent-2:#6366f1;   /* indigo-500 */
+  --accent-3:#4f46e5;   /* indigo-600 */
+
+  --surface-1: rgba(79,70,229,0.16);
+  --surface-2: rgba(79,70,229,0.08);
+
+  --pill-bg1: rgba(99,102,241,.22);
+  --pill-bg2: rgba(14,18,32,.20);
+  --frame-border: rgba(99,102,241,.38);
+}
+
+/* === THEME OVERRIDES === */
+
+
+/* Header glow (title/subtitle) */
+html[data-theme="dark"] .site-title{
+  text-shadow: 0 0 6px #6366f1cc, 0 0 16px #4f46e5cc;
+}
+html[data-theme="dark"] .subtitle{
+  text-shadow: 0 0 4px #6366f1cc, 0 0 10px #4f46e5cc;
+}
+
+/* Menu buttons + hover */
+html[data-theme="dark"] .menu-btn{
+  background: var(--surface-1);
+  border-color: var(--accent);
+  color: var(--text);
+  box-shadow: 0 0 5px var(--accent);
+}
+html[data-theme="dark"] .menu-btn:hover,
+html[data-theme="dark"] .menu-btn:focus-visible{
+  background: rgba(79,70,229,.18);
+  box-shadow: 0 0 16px var(--accent-2), 0 0 36px var(--accent-3), 0 0 56px #312e81;
+}
+
+/* Submenu items + hover */
+html[data-theme="dark"] .submenu li a{
+  background: var(--surface-1);
+  border-color: var(--accent);
+  color: var(--text);
+  box-shadow: 0 0 5px var(--accent);
+}
+html[data-theme="dark"] .submenu li a:hover{
+  background-color: rgba(79,70,229,.28);
+  box-shadow: 0 0 16px var(--accent-2), 0 0 36px var(--accent-3);
+  border-color: var(--accent-2);
+}
+
+/* Projects: side rails + hover glow (replace pink rails) */
+html[data-theme="dark"] .Projects li::before{
+  background: rgba(99,102,241,0.25);
+  box-shadow: 0 0 5px #6366f1;
+}
+html[data-theme="dark"] .Projects li::after{
+  background: rgba(99,102,241,0.45);
+  box-shadow: 0 0 5px #6366f1;
+}
+html[data-theme="dark"] .Projects li span{
+  background: var(--surface-1);
+  border-color: var(--accent);
+  color: var(--text);
+  box-shadow: 0 0 5px var(--accent);
+}
+html[data-theme="dark"] .Projects li:hover span{
+  background: rgba(79,70,229,.22);
+  box-shadow: 0 0 16px var(--accent-2), 0 0 36px var(--accent-3);
+}
+
+/* Marquee heading + pills */
+html[data-theme="dark"] .marquee{
+  background: var(--surface-2);
+  border-color: var(--frame-border);
+  box-shadow: 0 10px 40px rgba(0,0,0,.45), 0 0 18px var(--surface-1) inset;
+  color: var(--text);
+}
+html[data-theme="dark"] .marquee::before{
+  color: #c7d2fe; /* indigo-200 */
+  text-shadow: 0 0 8px var(--accent-2);
+}
+html[data-theme="dark"] .pill{
+  background: linear-gradient(180deg, var(--pill-bg1), var(--pill-bg2));
+  border-color: var(--accent);
+  color: var(--text);
+  box-shadow: 0 0 0 1px rgba(255,255,255,.05) inset, 0 8px 22px rgba(0,0,0,.35);
+}
+
+/* Nav hover already uses tokens, but reinforce */
+html[data-theme="dark"] nav ul{
+  background: var(--surface-1);
+  border-color: var(--accent);
+  box-shadow: 0 0 10px var(--accent), inset 0 0 10px var(--accent);
+}
+html[data-theme="dark"] nav ul:hover{
+  background: var(--accent);
+  box-shadow:
+    0 0 20px var(--accent),
+    0 0 40px var(--accent-2),
+    0 0 60px var(--accent-3),
+    inset 0 0 15px var(--accent),
+    inset 0 0 30px var(--accent-2);
+}
+html[data-theme="dark"] .marquee{
+  /* replace the marquee's local tokens */
+  --pill-bg1: rgba(99,102,241,.22);
+  --pill-bg2: rgba(14,18,32,.20);
+  --pill-border: #818cf8;
+  --pill-glow: rgba(99,102,241,.20);
+  --frame-bg: rgba(79,70,229,.08);
+  --frame-border: rgba(99,102,241,.38);
+  --text: #e8eefc;
+}
+
+html[data-theme="dark"] .marquee{
+  /* replace the marquee's local tokens */
+  --pill-bg1: rgba(99,102,241,.22);
+  --pill-bg2: rgba(14,18,32,.20);
+  --pill-border: #818cf8;
+  --pill-glow: rgba(99,102,241,.20);
+  --frame-bg: rgba(79,70,229,.08);
+  --frame-border: rgba(99,102,241,.38);
+  --text: #e8eefc;
+}
+
+/* Footer text bar was pink; give it an indigo tint in dark mode */
+html[data-theme="dark"] footer p{
+  background-color: rgba(99,102,241,.20);
+  color: var(--text);
+}
+/* Footer */
+html[data-theme="dark"] footer{
+  background: var(--surface-2);
+  border-color: var(--accent);
+  box-shadow: 0 0 10px var(--accent), inset 0 0 10px var(--accent);
+}
+html[data-theme="dark"] footer p{ color: var(--text); }
+
+/* Dark: force marquee to indigo, not its local pinks */
+html[data-theme="dark"] .marquee{
+  --pill-bg1: rgba(99,102,241,.22);
+  --pill-bg2: rgba(14,18,32,.20);
+  --pill-border: #818cf8;
+  --pill-glow: rgba(99,102,241,.20);
+  --frame-bg: rgba(79,70,229,.08);
+  --frame-border: rgba(99,102,241,.38);
+  --text: #e8eefc;
+}
+
+/* Footer bar tint in dark */
+html[data-theme="dark"] footer p{
+  background-color: rgba(99,102,241,.20);
+  color: var(--text);
+}
+/* === Toggle button styling === */
+.theme-toggle{
+  position: fixed; right: 16px; top: 16px; z-index: 9999;
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 8px 12px; border-radius: 999px;
+  border: 1px solid var(--accent);
+  color: var(--text);
+  background: var(--surface-1);
+  box-shadow: 0 0 10px var(--accent);
+  cursor: pointer; user-select: none;
+  font: 600 14px/1 system-ui, Segoe UI, Roboto, Inter, Arial, sans-serif;
+  transition: transform .15s ease, box-shadow .2s ease, background .2s ease;
+}
+.theme-toggle:hover{
+  transform: translateY(-1px);
+  box-shadow: 0 0 18px var(--accent), 0 0 36px var(--accent-2);
+}
+
+

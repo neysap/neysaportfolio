@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="portfolio.css">
+    <link rel="stylesheet" type='text/css' 
+    href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
+    <link rel = "stylesheet" href="Card.css">
+    <title>Portfolio</title>
+</head>
+<body>
+    <header class="header">
+        <!-- Title at the top -->
+        <h1 class ="site-title">Neysa Porter's Portfolio</h1>
+        <p class = "subtitle">Web Developer | Graphic Designer | Software Engineer</p>
+        
+       
+       
+        <!-- Image + Menus (2nd row) -->
+         <div class="header-row">
+        <img src="/images/PPSHADOW.png" alt="Neysa's Profile Picture" id="profile-pic">
+        <img src="/images/PPSHADOW-dark.png" alt="Neysa - dark" id="profile-pic-dark"  >
+        <button id="themeToggle" class="theme-toggle" aria-label="Toggle dark mode" title="Toggle theme">
+        <span class="sun">☀️</span><span class="moon">🌙</span>
+       </button>
+
+        
+        <div class = menu-row>
+            <!-- Education Menu -->
+            <div class="menu"> 
+             <button class="menu-btn" aria-haspopup="true" aria-expanded="false">
+            Education
+          </button>
+          <!-- Education Submenu -->
+            <ul id="edu-menu" class="submenu">
+                <li><a href="#UPenn">UPenn - MCIT</a></li>
+                <li><a href="#ESU"> East Stroudsburg Univ. - B.S.</a></li>
+                <li><a href="#UMN">Univ. of Minessota - Full Stack Cert</a></li>
+            </ul>
+        </div>
+
+          <!-- Site Menu -->
+          <div class="menu"> 
+             <button class="menu-btn" aria-haspopup="true" aria-expanded="false">
+            Cites
+          </button>
+            <!-- Cite Submenu -->
+            <ul id="site-menu" class="submenu">
+                <li><a href="https://github.com/neysap" >My Github</a></li>
+                <li><a href="https://www.behance.net/neysaporter">Behance</a></li>
+                <li><a href="https://www.linkedin.com/in/neysa-porter/">Linkedin</a></li>
+            </ul>
+        </div>
+
+        <!-- end of menu row(only menus) -->
+        </div>
+        <!-- end of header row(includes img) -->
+       </div> 
+    
+    </header>
+
+     <nav class="HOME" id="nav-home">
+        <ul>
+            
+            <a class="home-link" href="portfolio.html">HOME</a>
+            
+        </ul>
+    </nav>
+
+
+    <!-- Projects Section -->
+    <div class="c-projects">
+        
+        <div class="badge-wrap">
+        <span class="badge-3d">
+        <span class="devicon-python-plain"></span>
+        </div>
+        </span>
+        <h2 class="projects-title">Projects</h2>
+        
+        <div class="project-card">
+            <h3 class="project-name">Project 1</h3>
+            <img src="/images/project1.png" alt="Project 1 Image" class="project-image">
+            <p class="project-description">Description of Project 1.</p>
+            <a href="#" class="project-link">View Project</a>
+        </div>
+
+        <div class="project-card">
+            <h3 class="project-name">Project 2</h3>
+            <img src="/images/project1.png" alt="Project 2 Image" class="project-image">
+            <p class="project-description">Description of Project 2.</p>
+            <a href="#" class="project-link">View Project</a>
+        </div>
+
+    </div>
+ <script src="card.js"></script>
+<footer>
+        <p>Contact me at: porterneysa@gmail.com</p>
+
+</body>

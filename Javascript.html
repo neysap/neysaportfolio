@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+      try {
+    if (localStorage.getItem('theme') === 'dark') {
+      document.documentElement.setAttribute('data-theme', 'dark');
+    }
+    } catch(e) {}
+    </script>
+    <link rel="stylesheet" href="portfolio.css">
+    <link rel="stylesheet" type='text/css' 
+    href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
+    <link rel = "stylesheet" href="Card.css">
+    <title>Portfolio</title>
+</head>
+<body>
+    <header class="header">
+        <!-- Title at the top -->
+        <h1 class ="site-title">Neysa Porter's Portfolio</h1>
+        <p class = "subtitle">Web Developer | Graphic Designer | Software Engineer</p>
+         
+       
+       
+        <!-- Image + Menus (2nd row) -->
+        <div class="header-row">
+        <img src="/images/PPSHADOW.png" alt="Neysa's Profile Picture" id="profile-pic">
+        <img src="/images/PPSHADOW-dark.png" alt="Neysa - dark" id="profile-pic-dark"  >
+        <button id="themeToggle" class="theme-toggle" aria-label="Toggle dark mode" title="Toggle theme">
+        <span class="sun">☀️</span><span class="moon">🌙</span>
+       </button>
+      
+        
+        <div class = menu-row>
+            <!-- Education Menu -->
+            <div class="menu"> 
+             <button class="menu-btn" aria-haspopup="true" aria-expanded="false">
+            Education
+          </button>
+          <!-- Education Submenu -->
+            <ul id="edu-menu" class="submenu">
+                <li><a href="#UPenn">UPenn - MCIT</a></li>
+                <li><a href="#ESU"> East Stroudsburg Univ. - B.S.</a></li>
+                <li><a href="#UMN">Univ. of Minessota - Full Stack Cert</a></li>
+            </ul>
+        </div>
+
+          <!-- Site Menu -->
+          <div class="menu"> 
+             <button class="menu-btn" aria-haspopup="true" aria-expanded="false">
+            Cites
+          </button>
+            <!-- Cite Submenu -->
+            <ul id="site-menu" class="submenu">
+                <li><a href="https://github.com/neysap" >My Github</a></li>
+                <li><a href="https://www.behance.net/neysaporter">Behance</a></li>
+                <li><a href="https://www.linkedin.com/in/neysa-porter/">Linkedin</a></li>
+            </ul>
+        </div>
+
+        <!-- end of menu row(only menus) -->
+        </div>
+        <!-- end of header row(includes img) -->
+       </div> 
+    
+    </header>
+
+     <nav class="HOME" id="nav-home">
+        <ul>
+            
+            <a class="home-link" href="portfolio.html">HOME</a>
+            
+        </ul>
+    </nav>
+
+
+    <!-- Projects Section -->
+    <div class="c-projects">
+    <h2 class="projects-title"> JavaScript </h2>
+        
+        <div class="badge-wrap">
+        <span class="badge-3d">
+        <span class="devicon-javascript-plain"></span>
+        </span>
+        </div>
+        
+        
+        <div class="project-card">
+            <h3 class="project-name">Project 1 | CLI-Based Employee Database Manager</h3>
+            <img src="/images/js_proj1.png" alt="Project 1 Image" class="project-image">
+            <p class="project-description">
+                A command-line tool that allows business owners to view, add, and manage departments, roles, and employees. Built with Node.js, Inquirer, and MySQL to improve business organization and planning.</p>
+            <a href="https://youtu.be/eJUCudPpKc4" class="project-link">View Project</a>
+        </div>
+
+        <div class="project-card">
+            <h3 class="project-name">Project 2 | RESTful API for Social Networking </h3>
+            <img src="/images/js_proj2.png" alt="Project 2 Image" class="project-image">
+            <p class="project-description">
+                A RESTful API for a social networking platform that enables users to share thoughts, react to friends’ posts, and manage friend lists. Built with Express.js, MongoDB, and Mongoose, with fully tested CRUD endpoints for users, thoughts, and reactions.
+            </p>
+            <a href="https://www.youtube.com/watch?v=8c13EIcZ-dw&t=4s" class="project-link">View Project</a>
+        </div>
+
+    </div>
+
+     <script src="card.js"></script>
+
+    <footer>
+        <p>Contact me at: porterneysa@gmail.com</p>
+    
+</body>
+</html>

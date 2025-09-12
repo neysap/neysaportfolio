@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+      try {
+    if (localStorage.getItem('theme') === 'dark') {
+      document.documentElement.setAttribute('data-theme', 'dark');
+    }
+  } catch(e) {}
+</script>
+<link rel="stylesheet" href="portfolio.css">
+<!-- ...other head content... -->
+    <link rel="stylesheet" href="portfolio.css">
+    <link rel="stylesheet" type='text/css' 
+    href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
+          
+    <title>Portfolio of Neysa </title>
+
+</head>
+<body>
+    <header class="header">
+        <!-- Title at the top -->
+        <h1 class ="site-title">Neysa Porter's Portfolio</h1>
+        <p class = "subtitle">Web Developer | Graphic Designer | Software Engineer</p>
+        
+       
+       
+        <!-- Image + Menus (2nd row) -->
+       <div class="header-row">
+        <img src="/images/PPSHADOW.png" alt="Neysa's Profile Picture" id="profile-pic">
+        <img src="/images/PPSHADOW-dark.png" alt="Neysa - dark" id="profile-pic-dark"  >
+       <button id="themeToggle" class="theme-toggle" aria-label="Toggle dark mode" title="Toggle theme">
+       <span class="sun">☀️</span><span class="moon">🌙</span>
+       </button>
+
+        
+        <div class = menu-row>
+            <!-- Education Menu -->
+            <div class="menu"> 
+             <button class="menu-btn" aria-haspopup="true" aria-expanded="false">
+            Education
+          </button>
+          <!-- Education Submenu -->
+            <ul id="edu-menu" class="submenu">
+                <li><a href="https://www.cis.upenn.edu/graduate/program-offerings/master-of-computer-and-information-technology/">UPenn - MCIT</a></li>
+                <li><a href="https://esu.smartcatalogiq.com/en/current/undergraduate-catalog/academic-programs-and-courses/business-management/business-management-b-s/"> East Stroudsburg Univ. - B.S.</a></li>
+                <li><a href="https://www.credly.com/badges/d26613b8-6d47-489c-8360-f3b7677fe46b/linked_in_profile">Univ. of Minessota - Full Stack Cert</a></li>
+            </ul>
+        </div>
+
+          <!-- Site Menu -->
+          <div class="menu"> 
+             <button class="menu-btn" aria-haspopup="true" aria-expanded="false">
+            Cites
+          </button>
+            <!-- Cite Submenu -->
+            <ul id="site-menu" class="submenu">
+                <li><a href="https://github.com/neysap" >My Github</a></li>
+                <li><a href="https://www.behance.net/neysaporter">Behance</a></li>
+                <li><a href="https://www.linkedin.com/in/neysa-porter/">Linkedin</a></li>
+            </ul>
+        </div>
+
+        <!-- end of menu row(only menus) -->
+        </div>
+        <!-- end of header row(includes img) -->
+       </div> 
+    
+    </header>
+    
+
+
+
+
+    <nav class="HOME" id="nav-home">
+        <ul>
+            <a href="#Home">HOME</a></li>
+        </ul>
+    </nav>
+
+
+
+
+
+
+
+
+
+
+    
+
+                        <!-- Main Section -->
+    <div class="home-section">   
+        <ul class="Projects">
+
+            <li id ="card-js">
+                <a href="#JavaScript">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span class="devicon-javascript-plain"></span>
+                </a>
+            </li>
+
+            <li id ="card-java">
+                <a href="#Java">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span class="devicon-java-plain"></span>
+                </a>
+            </li>
+
+
+            <li id ="card-python">
+                <a href="#Python">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span class="devicon-python-plain"></span>
+                </a>
+            </li>
+
+
+            <li id ="card-c">
+                <a href="#C Programming">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span class="devicon-c-original"></span>
+                </a>
+            </li>
+
+        </ul>
+    </div>
+
+    
+
+
+
+<div class="marquee">
+
+    <!-- Row 1 (left → right) -->
+    <div class="row fast">
+     
+        <div class="track">
+        
+        <div class="pill">HTML</div>
+        <div class="pill">CSS</div>
+        <div class="pill">JavaScript</div>
+        <div class="pill">Java</div>
+        <div class="pill">C</div>
+        <div class="pill">Github</div>
+        <div class="pill">SEO</div>
+        <div class="pill">Docker</div>
+        <div class="pill">Python</div>
+        <div class="pill">Testing</div>
+        <div class="pill">Typescript</div>
+        <!-- duplicate set -->
+        <div class="dupe">
+          <div class="pill">HTML</div>
+          <div class="pill">CSS</div>
+          <div class="pill">JavaScript</div>
+          <div class="pill">Java</div>
+          <div class="pill">C</div>
+          <div class="pill">Github</div>
+          <div class="pill">SEO</div>
+          <div class="pill">Docker</div>
+          <div class="pill">Python</div>
+          <div class="pill">Testing</div>
+          <div class="pill">Typescript</div>
+        </div>
+      
+    </div>
+    
+</div>
+
+    <!-- Row 2 (right → left) -->
+    <div class="row reverse">
+      
+        <div class="track">
+        
+        <div class="pill">Performance Measurement</div>
+        <div class="pill">Google Workspace</div>
+        <div class="pill">Slack</div>
+        <div class="pill">Microsft Office Suites</div>
+        <div class="pill">Jira</div>
+        <div class="pill">Scrum</div>
+        <div class="pill">Azure</div>
+        <div class="pill">Agile</div>
+        <div class="pill">Docs</div>
+        
+        <div class="dupe">
+          <div class="pill">Performance Measurement</div>
+          <div class="pill">Google Workspace</div>
+          <div class="pill">Slack</div>
+          <div class="pill">Microsft Office Suites</div>
+          <div class="pill">Jira</div>
+          <div class="pill">Scrum</div>
+          <div class="pill">Azure</div>
+          <div class="pill">Agile</div>
+          <div class="pill">Docs</div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- Row 3 (left → right, slower) -->
+    <div class="row slow">
+      
+        <div class="track">
+        
+        <div class="pill">Node</div>
+        <div class="pill">Express</div>
+        <div class="pill">APIs</div>
+        <div class="pill">MySQL</div>
+        <div class="pill">MongoDB</div>
+        <div class="pill">PostgreSQL</div>
+        <div class="pill">AWS RDS</div>
+        <div class="pill">NoSQL</div>
+        <div class="pill">Insomnia</div>
+        <div class="dupe">
+          <div class="pill">Node</div>
+          <div class="pill">Express</div>
+          <div class="pill">APIs</div>
+          <div class="pill">MySQL</div>
+          <div class="pill">MongoDB</div>
+          <div class="pill">PostgreSQL</div>
+          <div class="pill">AWS RDS</div>
+          <div class="pill">NoSQL</div>
+          <div class="pill">Insomnia</div>
+         </div>
+
+        </div>
+    
+    </div>
+
+    <!-- Row 4 (right → left) -->
+    <div class="row reverse">
+      
+        <div class="track">
+       
+            <div class="pill">Figma</div>
+        <div class="pill">Wireframes</div>
+        <div class="pill">Adobe Photoshop</div>
+        <div class="pill">Design Systems</div>
+        <div class="pill">UI/UXs</div>
+        <div class="pill">Adobe Illustrator</div>
+        <div class="pill">Protypes</div>
+        <div class="pill">User Research</div>
+        <div class="pill">Usability Testing</div>
+        <div class="dupe">
+          <div class="pill">Figma</div>
+          <div class="pill">Wireframes</div>
+          <div class="pill">Adobe Photoshop</div>
+          <div class="pill">Design Systems</div>
+          <div class="pill">UI/UXs</div>
+          <div class="pill">Adobe Illustrator</div>
+          <div class="pill">Protypes</div>
+          <div class="pill">User Research</div>
+          <div class="pill">Usability Testing</div>
+        </div>
+      
+    </div>
+    
+</div>
+    
+        <script src="portfolio.js"></script>
+</div> <!-- Ensure marquee section is closed -->
+<footer>
+    <p>Contact me at: porterneysa@gmail.com</p>
+</footer>
+</body>
+</html>

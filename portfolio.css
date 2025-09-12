@@ -1,0 +1,803 @@
+
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+
+html, body { margin: 0; overflow-x: hidden; }
+body{
+  background: var(--bg-grad) !important;   /* <-- uses tokens */
+  background-size: cover;
+  background-attachment: fixed;
+  font-family: 'VT323', monospace;
+  margin: 0;                               /* avoid layout oddities */
+  color: var(--text);
+}
+
+
+/* Force all elements to inherit the body font-family */
+* {
+  font-family: inherit;
+}
+
+
+/* HEADER */
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 24px clamp(20px, 6vw, 64px);
+  margin: 0, auto;
+    
+}
+
+/* Title */
+.site-title {
+  margin: 0;
+  color: #fff;
+  
+  text-align: center;
+  
+  font-size: 50px;
+  text-shadow: 
+    0 0 6px #ff66b2cc,   /* smaller blur, higher opacity */
+    0 0 16px #ff3399cc;  /* same for second glow */
+    
+}
+.subtitle {
+    margin: 0px;
+    font-size: clamp(1rem, 2vw, 1.2rem);
+    color:#fff;
+    text-shadow: 
+    0 0 4px #ff66b2cc,
+    0 0 10px #ff3399cc;
+    text-align: center;
+    font-size: 20px;
+}
+
+/* MENU + IMG */
+.header-row {
+  position: relative;  /* ensures z-index context for submenus */
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row; /* Align items in a row */
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  margin-right: 0;
+  margin-bottom: 0;
+    
+
+}
+
+/* IMAGE */
+.profile { margin: 0; }
+#profile-pic-dark,
+#profile-pic {
+    width: 250px;
+    height: 200px;
+    display:flex; 
+    flex-wrap: wrap;
+}
+/* Show only the light image by default */
+#profile-pic-dark { 
+  display: none; 
+}
+
+/* ALL MENUS */
+.menu-row {
+  display: flex;
+  flex-direction: column; /* Stack menus vertically */
+  flex-wrap: wrap; /* Allow wrapping if needed */
+  margin: 0px;
+  padding: 0px;
+
+}
+
+/* DIV OF EACH MENU  */
+.menu {
+    position: relative; /* Position relative to allow absolute positioning of submenu */
+    margin: 7px; /* Remove default margin */
+    padding: 0px; /* Remove default padding */
+    
+}
+/* DIV OF EACH MENU BUTTON */
+.menu-btn {
+    cursor: pointer;
+    border: 2px solid #ff66b2;
+    border-radius: 3px;;
+    background: rgba(255, 102, 178, 0.2);
+    color: #fff;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+    font-weight: 700;
+    font-size: 26px; /* Adjust font size for better fit */
+    text-shadow: #333 1px 1px 2px;
+    inline-size: 200px; /* Set a fixed width for the buttons */
+    height: 30px; /* Set a fixed height for the buttons */
+    display: flex; /* Make the button a flex container */
+    align-items: center; /* Center items vertically */
+    justify-content: center; /* Center items horizontally */
+    text-align: center; /* Center text within the button */
+    overflow: hidden; /* Hide overflow for better appearance */
+    text-overflow: ellipsis; /* Add ellipsis for overflow text */
+    box-shadow: 0 0 5px #ff66b2;
+    
+   
+  }
+
+
+.menu-btn:hover,
+.menu-btn:focus-visible {
+  background: rgba(255, 102, 178, 0.1);
+  box-shadow: 0 0 16px #ff66b2, 0 0 36px #ff3399, 0 0 56px #ff007f;
+  transform: translateY(-1px);
+  outline: none;
+}
+
+
+
+
+/* SUBMENUs (right expanding) */
+.submenu {
+    display: none; /* Hide submenu by default */
+    position: absolute; /* Position submenu absolutely */
+    z-index: 20; /* Ensure submenu appears above other content */
+    top: 0; /* Align submenu to the top of the button */
+    left: 100%; /* Position submenu to the right of the button */
+    height: 30px; /* Set a fixed height for the submenu items */
+    padding: 0; /* Add some padding for better spacing */
+    margin: 0; /* Remove default margin */
+    gap: 0; /* No gap between submenu items */
+    white-space: nowrap;         /* no wrapping */
+    font-size: 20px;
+    
+    grid-auto-flow: column; /* Arrange items in a single row */
+    grid-auto-columns: max-content; /* Allow columns to size based on content */
+   
+    
+}
+
+
+.submenu li { list-style: none; }
+.submenu li a {
+    
+    margin: 0px; /* Remove default margin */
+    padding: 0px 5px; /* Add horizontal padding for better spacing */
+    height: 25px; /* Set a fixed height for the submenu items */
+    text-shadow: #333 1px 1px 2px;
+    display: flex; /* Make the link fill the entire list item */
+    flex-direction: row; /* Align items in a row */;
+    align-items: center; /* Center items vertically */
+    justify-content: flex-start; /* Align items to the left */
+    overflow: hidden; /* Hide overflow for better appearance */
+    /* background: rgba(255, 102, 178, 0.2); */
+    background: rgb(195, 2, 102);
+    border: 2px solid #ff66b2;
+    border-radius: 2px 0px;
+    box-shadow: 0 0 5px #ff66b2;
+    color: #fff;
+    text-decoration: none;
+
+    
+}
+
+.menu:hover .submenu {
+    display: grid; /* Use grid layout for submenu on hover*/
+    grid-auto-flow: column;     /* keep horizontal */
+    grid-auto-columns: max-content;
+    gap: 0;
+    display: flex; /* Use flexbox for submenu on hover */
+    
+}
+
+.submenu li a:hover {
+    display: flex;
+    align-items: center;
+    height: 25px;
+    padding: 0 8px;
+    border: #3a0d23 2px solid;
+    border-radius: 3px;
+    background: rgba(235, 49, 123, 0.921);
+    box-shadow: 0 0 16px #ff66b2, 0 0 36px #ff3399, 0 0 56px #ff007f;
+    transform: translateY(-1px);
+    
+}
+
+/* When viewport is narrow, drop BELOW and stack as a column */
+@media (max-width: 1279px) {
+  .submenu {
+    top: 100%;     /* attach under the button */
+    width: 100%; /* make it full width */
+    left: 0;       /* align with left edge of button */
+    flex-direction: column;
+  }
+
+  .submenu li a {
+    background: rgb(195, 2, 102);
+    text-transform: ellipsis;
+     /* Make submenu items fill the entire width */
+  }
+  .submenu li a:hover {
+    background-color: rgb(65, 28, 45);
+    box-shadow: 0 0 16px #ff66b2, 0 0 36px #ff3399, 0 0 56px #ff007f;
+    transform: translateY(-1px);
+    text-transform: ellipsis;
+    display: inline-flex;
+  }
+}
+
+
+
+/* NAV BAR */
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: -27px 0 27px 0; /* Adjusted margin for better alignment */
+    display: flex;
+    justify-content: center;
+    border: 2px solid #ff66b2;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background: rgba(255, 102, 178, 0.2);
+    box-shadow: 
+              0 0 10px #ff66b2,
+              inset 0 0 10px #ff66b2; ;
+          /* inner glow */
+}
+nav ul:hover {
+    background: #ff66b2; /* SOLID glowing pink fill */
+    box-shadow: 
+        0 0 20px #ff66b2, 
+        0 0 40px #ff3399, 
+        0 0 60px #ff007f, 
+        inset 0 0 15px #ff66b2, 
+        inset 0 0 30px #ff3399;
+    transform: scale(1.05);
+}
+nav a {
+    color: #fff;
+    text-shadow: #333 1px 1px 2px;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 4px 100%;
+    font-size: 30px;
+}
+
+
+
+
+
+
+
+/* Home Section */
+.home-section {
+    margin: 0 auto;
+    padding: 0 auto;
+    /* box-sizing: border-box; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 40vh; /* Ensure it takes up at least 70% of the viewport height */
+     padding-top: 2rem; /* just a little breathing room */
+    
+   
+}
+
+
+/* ul (list of projects grouped) */
+.Projects {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    /* transform: rotate(-10deg) ; slight rotation for a dynamic effect */
+    transform-style: preserve-3d; /* maintain 3D perspective */
+}
+
+/* li (each project item) */
+.Projects li { 
+    position: relative;
+    display: block;
+    list-style: none;
+    width: 100px; /* Fixed width for each project item */
+    height: 200px; /* Fixed height for each project item */
+    margin: 50px;  /* Space between project items */
+    align-items: center;
+    justify-content: center;
+    
+
+}
+
+
+/* Dimension Border(illusion of buttons) */
+.Projects li::before {
+    content: "";
+    position: absolute;
+    bottom: -26px; /* Adjust as needed */
+    left: -4%;
+    width: 115%;
+    height: 10px; /* Adjust thickness */
+    background: rgba(255, 102, 178, 0.3);
+    box-shadow: 0 0 5px #ff66b2;
+    transform: skewX(-41deg); /* Skew to match the project list */
+
+}
+
+.Projects li::after {
+    content: "";
+    position: absolute;
+    top: 3px; /* Adjust as needed */
+    left: -9px;
+    width: 10px;
+    height: 109%; /* Adjust thickness */
+    background: rgba(255, 102, 178, 0.5);
+    border-radius: 0px;
+    box-shadow: 0 0 5px #ff66b2;
+    transform: skewY(-49deg); /* Skew to match the project list */
+}
+
+
+
+/* Property of Each item in the list */
+.Projects li span {
+    position: absolute;
+    padding: 5px;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex !important;
+    line-height: 60px; /* Center text vertically */
+
+    background: rgba(255, 102, 178, 0.2);
+    border: 2px solid #ff66b2;
+    border-radius: 2px;
+    box-shadow: 0 0 5px #ff66b2;
+    color: #fff;
+    text-align: center;
+    text-shadow: #333 2px 5px 3px;
+    
+    list-style: none;
+    text-decoration: none;
+    justify-content: center;
+    align-items: center;
+    font-size: 50px; /* Adjust font size for better fit */
+    transition: transform 1s ease-out;
+    
+}
+
+.Projects li:hover span{
+    z-index: 1000;
+    transition: 0.4s;
+    /* box-shadow: 0 0 16px #ff66b2, 0 0 36px #ff3399, 0 0 56px #ff007f; */
+    transform: translateY(-1px);
+}
+
+
+
+/* positions and opacity per layer (per span number in any card). */
+.Projects li:hover span:nth-child(5) {
+    transform: translate(40px, -40px);
+    opacity: 1; /* Ensure visibility on hover */  
+}
+  
+.Projects li:hover span:nth-child(4) {
+    transform: translate(30px, -30px);
+    opacity: .8;
+}
+
+.Projects li:hover span:nth-child(3) {
+    transform: translate(20px, -20px);
+    opacity: .6;
+}
+
+.Projects li:hover span:nth-child(2) {
+    transform: translate(10px, -10px);
+    opacity: .4;
+}
+
+.Projects li:hover span:nth-child(1) {
+    transform: translate(0px, 0px);
+    opacity: .5;
+}
+
+
+
+/* color/glow theme per card (per list item position in the grid). */
+.Projects li:nth-child(1):hover span{
+    background: rgba(255, 102, 178, 1); 
+    box-shadow: 
+        0 0 15px #ff3399,
+        0 0 30px #ff007f; 
+    animation: gradient 10s ease infinite;
+}
+.Projects li:nth-child(2):hover span{
+    background: rgba(255, 102, 178, 1); 
+    box-shadow: 
+        0 0 15px #ff3399,
+        0 0 30px #ff007f; 
+    animation: gradient 6s ease infinite;
+}
+.Projects li:nth-child(3):hover span{
+    background: rgba(255, 102, 178, 1);
+    box-shadow: 
+        0 0 15px #ff3399,
+        0 0 30px #ff007f; 
+    animation: gradient 5s ease infinite;
+}
+.Projects li:nth-child(4):hover span{
+    background: rgba(255, 102, 178, 1);
+    box-shadow: 
+        0 0 15px #ff3399,
+        0 0 30px #ff007f; 
+    animation: gradient 4s ease infinite;
+}
+.Projects li:nth-child(5):hover span{
+    background: rgba(255, 102, 178, 1); 
+    box-shadow: 
+        0 0 15px #ff3399,
+        0 0 30px #ff007f;
+    animation: gradient 4s ease infinite;
+}
+
+
+
+
+
+
+
+
+
+
+footer {  
+    color: #fff;
+    text-align: center;
+    position: relative;
+    padding: 0px;
+    margin-top: 100px;
+    width: 100%;
+    font-size: 16px;
+    border-radius: 3px;
+    box-shadow: 0 0 5px #ff66b2;
+    background: rgba(255, 102, 178, 0.2);
+    border: 2px solid #ff66b2;
+    box-shadow: 
+              0 0 10px #ff66b2,
+              inset 0 0 10px #ff66b2; ;
+          /* inner glow */  
+  
+
+    
+}
+
+
+
+
+
+
+
+
+
+/******** STANDALONE MARQUEE SECTION (pink theme, no globals) ********/
+
+/* Local variables for this section only */
+.marquee {
+  --gap: 22px;              /* space between boxes */
+  --speed: 22s;             /* lower = faster */
+  --radius: 12px;           /* pill radius */
+  --pill-bg1: rgba(255,102,178,.22);
+  --pill-bg2: rgba(234,117,175,.12);
+  --pill-border: #ff66b2;
+  --pill-glow: rgba(255, 0, 127, .22);
+  --frame-bg: rgba(255,102,178,.10);
+  --frame-border: rgba(255,102,178,.45);
+  --text: #fff;
+}
+
+/* Section “card” look */
+.marquee{ 
+  width: min(950px, 92vw);
+  margin: 48px auto 64px;
+  padding: 24px 10px;
+  display: grid;
+  gap: 18px;
+  background: var(--frame-bg);
+  border: 1px solid var(--frame-border);
+  border-radius: 20px;
+  box-shadow:
+    0 10px 40px rgba(0,0,0,.35),
+    0 0 18px var(--pill-glow) inset;
+  /* Keep it above page bg but below other floating elements */
+  position: relative;
+  z-index: 0;
+}
+
+/* Optional: a light header line at the top of the section (no extra HTML needed) */
+.marquee::before{
+  content: "Skills & Tools";
+  display: block;
+  font: 700 14px/1.1 system-ui, Segoe UI, Roboto, Inter, Arial, sans-serif;
+  color: #ffe3f2;
+  letter-spacing: .4px;
+  opacity: .9;
+  text-shadow: 0 0 8px rgba(255,102,178,.6);
+}
+
+/* Each scrolling row */
+.row{
+  --dir: 1; /* 1 = left→right, -1 = right→left */
+  overflow-x: hidden;
+  overflow-y: visible;
+  padding-block: 4px;
+  border-radius: 16px;
+  /* soft edge fade so rows feel embedded */
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+
+  /* subtle inner divider */
+  box-shadow: none;
+}
+
+/* Movement track */
+.track{
+  display: flex;
+  gap: var(--gap);
+  width: max-content;
+  animation: marquee-scroll var(--speed) linear infinite;
+  transform: translateX(0);
+  will-change: transform;
+  align-items: center;
+}
+
+/* Direction & speed helpers (already in your HTML) */
+.row.reverse { --dir: -1; }
+.row.fast    { --speed: 18s; }
+.row.slow    { --speed: 28s; }
+
+/* Pills/boxes */
+.pill{
+  white-space: nowrap;
+  padding: 10px 16px;
+  border-radius: var(--radius);
+  border: 1px solid var(--pill-border);
+  background: linear-gradient(180deg, var(--pill-bg1), var(--pill-bg2));
+  color: var(--text);
+  font: 600 15px/1.1 system-ui, Segoe UI, Roboto, Inter, Arial, sans-serif;
+  letter-spacing: .2px;
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,.05) inset,
+    0 8px 22px var(--pill-glow);
+}
+
+/* Duplicate set so loop is seamless */
+.dupe{
+  display: flex;
+  gap: var(--gap);
+}
+
+/* Pause on hover (keeps section interactive but not needed for clicks) */
+.row:hover .track { animation-play-state: paused; }
+
+/* Animation: slide half the width so the duplicate takes over */
+@keyframes marquee-scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+.row.reverse .track {
+  animation-direction: reverse;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce){
+  .track{ animation: none !important; }
+}
+
+/* Responsive tweaks */
+@media (max-width: 640px){
+  .marquee{ padding: 18px 8px; border-radius: 16px; }
+  .pill{ padding: 8px 12px; font-weight: 600; font-size: 14px; }
+  .row.fast .pill{ opacity: .9; }
+  .row.slow .pill{ opacity: 1; }
+}
+
+
+
+
+  footer p {
+    margin: 0;
+    padding: 10px;
+    color: #fff;
+    text-shadow: #333 1px 1px 0px;
+    font-size: clamp(.8rem, 1.5vw, 1.2rem);
+    background-color: #ea75af79;
+    font-size: 22px;
+}
+
+
+
+/* === THEME TOKENS === */
+/* Light (current look) */
+:root{
+  --bg-grad: linear-gradient(-60deg, #ff007f, #1a1a1a);
+  --text: #ffffff;
+
+  --accent: #ff66b2;      /* pink glow */
+  --accent-2: #ff3399;
+  --accent-3: #ff007f;
+
+  --surface-1: rgba(255,102,178,0.20); /* buttons/cards */
+  --surface-2: rgba(255,102,178,0.10); /* sections */
+
+  --pill-bg1: rgba(255,102,178,.22);
+  --pill-bg2: rgba(234,117,175,.12);
+  --frame-border: rgba(255,102,178,.45);
+}
+
+/* Dark */
+html[data-theme="dark"]{
+  --bg-grad: linear-gradient(-60deg, #05060a 0%, #0a1030 40%, #1b2563 100%);
+  --text: #e8eefc;
+
+  /* indigo accents */
+  --accent:  #818cf8;   /* indigo-300/400 */
+  --accent-2:#6366f1;   /* indigo-500 */
+  --accent-3:#4f46e5;   /* indigo-600 */
+
+  --surface-1: rgba(79,70,229,0.16);
+  --surface-2: rgba(79,70,229,0.08);
+
+  --pill-bg1: rgba(99,102,241,.22);
+  --pill-bg2: rgba(14,18,32,.20);
+  --frame-border: rgba(99,102,241,.38);
+}
+
+/* === THEME OVERRIDES === */
+html[data-theme="dark"] #profile-pic        { display: none; }
+html[data-theme="dark"] #profile-pic-dark   { display: block; }
+
+/* Header glow (title/subtitle) */
+html[data-theme="dark"] .site-title{
+  text-shadow: 0 0 6px #6366f1cc, 0 0 16px #4f46e5cc;
+}
+html[data-theme="dark"] .subtitle{
+  text-shadow: 0 0 4px #6366f1cc, 0 0 10px #4f46e5cc;
+}
+
+/* Menu buttons + hover */
+html[data-theme="dark"] .menu-btn{
+  background: var(--surface-1);
+  border-color: var(--accent);
+  color: var(--text);
+  box-shadow: 0 0 5px var(--accent);
+}
+html[data-theme="dark"] .menu-btn:hover,
+html[data-theme="dark"] .menu-btn:focus-visible{
+  background: rgba(79,70,229,.18);
+  box-shadow: 0 0 16px var(--accent-2), 0 0 36px var(--accent-3), 0 0 56px #312e81;
+}
+
+/* Submenu items + hover */
+html[data-theme="dark"] .submenu li a{
+  background: rgba(99,102,241,1);
+  border-color: var(--accent);
+  color: var(--text);
+  box-shadow: 0 0 5px var(--accent);
+}
+html[data-theme="dark"] .submenu li a:hover{
+  background-color: rgba(79,70,229,1);
+  box-shadow: 0 0 16px var(--accent-2), 0 0 36px var(--accent-3);
+  border-color: var(--accent-2);
+}
+
+/* Projects: side rails + hover glow (replace pink rails) */
+html[data-theme="dark"] .Projects li::before{
+  background: rgba(99,102,241,0.25);
+  box-shadow: 0 0 5px #6366f1;
+}
+html[data-theme="dark"] .Projects li::after{
+  background: rgba(99,102,241,0.45);
+  box-shadow: 0 0 5px #6366f1;
+}
+html[data-theme="dark"] .Projects li span{
+  background: var(--surface-1);
+  border-color: var(--accent);
+  color: var(--text);
+  box-shadow: 0 0 5px var(--accent);
+}
+html[data-theme="dark"] .Projects li:hover span{
+  background: rgba(79,70,229,.22);
+  box-shadow: 0 0 16px var(--accent-2), 0 0 36px var(--accent-3);
+}
+
+/* Marquee heading + pills */
+html[data-theme="dark"] .marquee{
+  background: var(--surface-2);
+  border-color: var(--frame-border);
+  box-shadow: 0 10px 40px rgba(0,0,0,.45), 0 0 18px var(--surface-1) inset;
+  color: var(--text);
+}
+html[data-theme="dark"] .marquee::before{
+  color: #c7d2fe; /* indigo-200 */
+  text-shadow: 0 0 8px var(--accent-2);
+}
+html[data-theme="dark"] .pill{
+  background: linear-gradient(180deg, var(--pill-bg1), var(--pill-bg2));
+  border-color: var(--accent);
+  color: var(--text);
+  box-shadow: 0 0 0 1px rgba(255,255,255,.05) inset, 0 8px 22px rgba(0,0,0,.35);
+}
+
+/* Nav hover already uses tokens, but reinforce */
+html[data-theme="dark"] nav ul{
+  background: var(--surface-1);
+  border-color: var(--accent);
+  box-shadow: 0 0 10px var(--accent), inset 0 0 10px var(--accent);
+}
+html[data-theme="dark"] nav ul:hover{
+  background: var(--accent);
+  box-shadow:
+    0 0 20px var(--accent),
+    0 0 40px var(--accent-2),
+    0 0 60px var(--accent-3),
+    inset 0 0 15px var(--accent),
+    inset 0 0 30px var(--accent-2);
+}
+html[data-theme="dark"] .marquee{
+  /* replace the marquee's local tokens */
+  --pill-bg1: rgba(99,102,241,.22);
+  --pill-bg2: rgba(14,18,32,.20);
+  --pill-border: #818cf8;
+  --pill-glow: rgba(99,102,241,.20);
+  --frame-bg: rgba(79,70,229,.08);
+  --frame-border: rgba(99,102,241,.38);
+  --text: #e8eefc;
+}
+
+html[data-theme="dark"] .marquee{
+  /* replace the marquee's local tokens */
+  --pill-bg1: rgba(99,102,241,.22);
+  --pill-bg2: rgba(14,18,32,.20);
+  --pill-border: #818cf8;
+  --pill-glow: rgba(99,102,241,.20);
+  --frame-bg: rgba(79,70,229,.08);
+  --frame-border: rgba(99,102,241,.38);
+  --text: #e8eefc;
+}
+
+/* Footer text bar was pink; give it an indigo tint in dark mode */
+html[data-theme="dark"] footer p{
+  background-color: rgba(99,102,241,.20);
+  color: var(--text);
+}
+/* Footer */
+html[data-theme="dark"] footer{
+  background: var(--surface-2);
+  border-color: var(--accent);
+  box-shadow: 0 0 10px var(--accent), inset 0 0 10px var(--accent);
+}
+
+/* === Toggle button styling === */
+.theme-toggle{
+  position: fixed; right: 16px; top: 16px; z-index: 9999;
+  display: inline-block; align-items: center; gap: 6px;
+  padding: 8px 12px; border-radius: 999px;
+  border: 1px solid var(--accent);
+  color: var(--text);
+  background: var(--surface-1);
+  box-shadow: 0 0 10px var(--accent);
+  cursor: pointer; user-select: none;
+  font: 600 14px/1 system-ui, Segoe UI, Roboto, Inter, Arial, sans-serif;
+  transition: transform .15s ease, box-shadow .2s ease, background .2s ease;
+}
+.theme-toggle:hover{
+  transform: translateY(-1px);
+  box-shadow: 0 0 18px var(--accent), 0 0 36px var(--accent-2);
+}
+
+:root, html, body, .project-card, .menu-btn, .marquee, .pill, footer {
+  transition: background-color .25s ease, color .25s ease, border-color .25s ease, box-shadow .25s ease;
+}
+@media (prefers-reduced-motion: reduce){
+  :root, html, body, .project-card, .menu-btn, .marquee, .pill, footer { transition: none; }
+}
