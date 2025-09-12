@@ -22,7 +22,7 @@ document.getElementById("nav-home").addEventListener("click", function() {
 
 //GLOBAL Nav Behavior
 document.getElementById("nav-home").addEventListener("click", function() {
-    window.location.href = "portfolio.html";
+    window.location.href = "index.html";
 });
 
 (function () {
