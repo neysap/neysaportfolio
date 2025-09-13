@@ -5,7 +5,7 @@
 'use strict';
 
 document.getElementById("card-js").addEventListener("click", function() {
-    window.location.href = "JavaScript.html";
+    window.location.href = "Javascript.html";
 });
 document.getElementById("card-java").addEventListener("click", function() {
     window.location.href = "java.html";
