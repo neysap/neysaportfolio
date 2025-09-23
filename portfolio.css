@@ -1,12 +1,10 @@
-
-@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech&display=swap');
 html, body { margin: 0; overflow-x: hidden; }
 body{
   background: var(--bg-grad) !important;   /* <-- uses tokens */
   background-size: cover;
   background-attachment: fixed;
-  font-family: 'VT323', monospace;
+  font-family: "Share Tech", sans-serif;
   margin: 0;                               /* avoid layout oddities */
   color: var(--text);
 }
@@ -201,7 +199,7 @@ body{
 }
 
 /* When viewport is narrow, drop BELOW and stack as a column */
-@media (max-width: 1279px) {
+@media (max-width: 489px) {
   .submenu {
     top: 100%;     /* attach under the button */
     width: 100%; /* make it full width */
