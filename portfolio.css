@@ -189,13 +189,7 @@ body{
     gap: 0;
     /* ...existing code... */
 }
-.submenu:hover {
-    opacity: 1;
-    visibility: visible;
-    pointer-events: auto;
-    transform: translateY(0) scaleY(1);
-    transition: opacity 0.25s ease, transform 0.25s cubic-bezier(.4,2,.3,1), visibility 0.45s;
-}
+
 .submenu li a:hover {
     display: flex;
     align-items: center;
@@ -686,7 +680,15 @@ html[data-theme="dark"] .menu-btn:focus-visible{
   box-shadow: 0 0 16px var(--accent-2), 0 0 36px var(--accent-3), 0 0 56px #312e81;
 }
 
+
+
 /* Submenu items + hover */
+html[data-theme="dark"] .submenu:hover {
+  background: transparent; 
+  padding: 0;             
+
+}
+
 html[data-theme="dark"] .submenu li a{
   background: rgba(99,102,241,1);
   border-color: var(--accent);
@@ -811,7 +813,3 @@ html[data-theme="dark"] footer{
   :root, html, body, .project-card, .menu-btn, .marquee, .pill, footer { transition: none; }
 }
 
-/* Add dark background to submenu in dark mode */
-html[data-theme="dark"] .submenu {
-    background: #222;
-}

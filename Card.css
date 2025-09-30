@@ -182,7 +182,8 @@ html[data-theme="dark"]{
 }
 
 /* === THEME OVERRIDES === */
-
+html[data-theme="dark"] #profile-pic        { display: none; }
+html[data-theme="dark"] #profile-pic-dark   { display: block; }
 
 /* Header glow (title/subtitle) */
 html[data-theme="dark"] .site-title{
@@ -205,15 +206,23 @@ html[data-theme="dark"] .menu-btn:focus-visible{
   box-shadow: 0 0 16px var(--accent-2), 0 0 36px var(--accent-3), 0 0 56px #312e81;
 }
 
+
+
 /* Submenu items + hover */
+html[data-theme="dark"] .submenu:hover {
+  background: transparent; 
+  padding: 0;             
+
+}
+
 html[data-theme="dark"] .submenu li a{
-  background: var(--surface-1);
+  background: rgba(99,102,241,1);
   border-color: var(--accent);
   color: var(--text);
   box-shadow: 0 0 5px var(--accent);
 }
 html[data-theme="dark"] .submenu li a:hover{
-  background-color: rgba(79,70,229,.28);
+  background-color: rgba(79,70,229,1);
   box-shadow: 0 0 16px var(--accent-2), 0 0 36px var(--accent-3);
   border-color: var(--accent-2);
 }
@@ -238,23 +247,6 @@ html[data-theme="dark"] .Projects li:hover span{
   box-shadow: 0 0 16px var(--accent-2), 0 0 36px var(--accent-3);
 }
 
-/* Marquee heading + pills */
-html[data-theme="dark"] .marquee{
-  background: var(--surface-2);
-  border-color: var(--frame-border);
-  box-shadow: 0 10px 40px rgba(0,0,0,.45), 0 0 18px var(--surface-1) inset;
-  color: var(--text);
-}
-html[data-theme="dark"] .marquee::before{
-  color: #c7d2fe; /* indigo-200 */
-  text-shadow: 0 0 8px var(--accent-2);
-}
-html[data-theme="dark"] .pill{
-  background: linear-gradient(180deg, var(--pill-bg1), var(--pill-bg2));
-  border-color: var(--accent);
-  color: var(--text);
-  box-shadow: 0 0 0 1px rgba(255,255,255,.05) inset, 0 8px 22px rgba(0,0,0,.35);
-}
 
 /* Nav hover already uses tokens, but reinforce */
 html[data-theme="dark"] nav ul{
@@ -271,27 +263,8 @@ html[data-theme="dark"] nav ul:hover{
     inset 0 0 15px var(--accent),
     inset 0 0 30px var(--accent-2);
 }
-html[data-theme="dark"] .marquee{
-  /* replace the marquee's local tokens */
-  --pill-bg1: rgba(99,102,241,.22);
-  --pill-bg2: rgba(14,18,32,.20);
-  --pill-border: #818cf8;
-  --pill-glow: rgba(99,102,241,.20);
-  --frame-bg: rgba(79,70,229,.08);
-  --frame-border: rgba(99,102,241,.38);
-  --text: #e8eefc;
-}
 
-html[data-theme="dark"] .marquee{
-  /* replace the marquee's local tokens */
-  --pill-bg1: rgba(99,102,241,.22);
-  --pill-bg2: rgba(14,18,32,.20);
-  --pill-border: #818cf8;
-  --pill-glow: rgba(99,102,241,.20);
-  --frame-bg: rgba(79,70,229,.08);
-  --frame-border: rgba(99,102,241,.38);
-  --text: #e8eefc;
-}
+
 
 /* Footer text bar was pink; give it an indigo tint in dark mode */
 html[data-theme="dark"] footer p{
@@ -304,28 +277,11 @@ html[data-theme="dark"] footer{
   border-color: var(--accent);
   box-shadow: 0 0 10px var(--accent), inset 0 0 10px var(--accent);
 }
-html[data-theme="dark"] footer p{ color: var(--text); }
 
-/* Dark: force marquee to indigo, not its local pinks */
-html[data-theme="dark"] .marquee{
-  --pill-bg1: rgba(99,102,241,.22);
-  --pill-bg2: rgba(14,18,32,.20);
-  --pill-border: #818cf8;
-  --pill-glow: rgba(99,102,241,.20);
-  --frame-bg: rgba(79,70,229,.08);
-  --frame-border: rgba(99,102,241,.38);
-  --text: #e8eefc;
-}
-
-/* Footer bar tint in dark */
-html[data-theme="dark"] footer p{
-  background-color: rgba(99,102,241,.20);
-  color: var(--text);
-}
 /* === Toggle button styling === */
 .theme-toggle{
   position: fixed; right: 16px; top: 16px; z-index: 9999;
-  display: inline-flex; align-items: center; gap: 6px;
+  display: inline-block; align-items: center; gap: 6px;
   padding: 8px 12px; border-radius: 999px;
   border: 1px solid var(--accent);
   color: var(--text);
@@ -338,6 +294,13 @@ html[data-theme="dark"] footer p{
 .theme-toggle:hover{
   transform: translateY(-1px);
   box-shadow: 0 0 18px var(--accent), 0 0 36px var(--accent-2);
+}
+
+:root, html, body, .project-card, .menu-btn, .marquee, .pill, footer {
+  transition: background-color .40s ease, color .25s ease, border-color .25s ease, box-shadow .25s ease;
+}
+@media (prefers-reduced-motion: reduce){
+  :root, html, body, .project-card, .menu-btn, .marquee, .pill, footer { transition: none; }
 }
 
 
