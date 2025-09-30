@@ -15,7 +15,7 @@
     }
   }
 
-  // ✅ initialize from saved preference (fallback to light)
+  // initialize from saved preference (fallback to light)
   const saved = localStorage.getItem(KEY) || "light";
   setTheme(saved);
 
