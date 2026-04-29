@@ -1,5 +1,81 @@
 'use strict';
+// Prism swipe + live drag — does not touch theme code
+const prism = document.getElementById("projectPrism");
+const stage = document.querySelector(".prism-stage");
 
+if (prism && stage) {
+  let rotationStep = 3;
+  let startX = 0;
+  let currentDrag = 0;
+  let isDragging = false;
+
+  const anglePerSlide = 120;
+  const startTilt = 0;
+  const swipeThreshold = 50;
+  const dragSensitivity = 0.28; // higher = rotates more while dragging
+
+  
+  function setPrismRotation(extraDragAngle = 0) {
+  const angle = rotationStep * anglePerSlide + startTilt + extraDragAngle;
+
+  // Normalize active face: 0, 1, or 2
+  const active = ((rotationStep % 3) + 3) % 3;
+
+  // Adjust these numbers until each face sits centered
+  const offsets = [-200, 100, 100];
+
+  prism.style.transform = `
+    translateX(${offsets[active]}px)
+    rotateY(${angle}deg)
+  `;
+}
+
+  setPrismRotation();
+
+  stage.addEventListener("pointerdown", (e) => {
+    isDragging = true;
+    startX = e.clientX;
+    currentDrag = 0;
+
+    stage.setPointerCapture?.(e.pointerId);
+    prism.style.transition = "none"; // live movement, no lag
+  });
+
+  stage.addEventListener("pointermove", (e) => {
+    if (!isDragging) return;
+
+    currentDrag = e.clientX - startX;
+
+    // negative drag = left, positive drag = right
+    const liveAngle = currentDrag * dragSensitivity;
+    setPrismRotation(liveAngle);
+  });
+
+  document.addEventListener("pointerup", () => {
+    if (!isDragging) return;
+
+    prism.style.transition = "transform .8s ease";
+
+    if (currentDrag < -swipeThreshold) {
+      rotationStep--;
+    }
+
+    if (currentDrag > swipeThreshold) {
+      rotationStep++;
+    }
+
+    setPrismRotation();
+    isDragging = false;
+  });
+
+  document.addEventListener("pointercancel", () => {
+    if (!isDragging) return;
+
+    prism.style.transition = "transform .8s ease";
+    setPrismRotation();
+    isDragging = false;
+  });
+}
 document.addEventListener('DOMContentLoaded', () => {
   // card click handlers — only attach if elements exist on this page
   const attachClick = (id, href) => {
@@ -70,4 +146,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // fail silently — don't let JS errors break other scripts
     console.error('portfolio.js error', e);
   }
+  
 })();
+
