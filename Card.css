@@ -52,6 +52,8 @@
 .project-image {
   /* display: block; */
   max-width: 100%;
+  height: 360px;
+  width: 650px;
   border-radius: 6px;
   margin: 0.5rem auto 1rem;
 }
