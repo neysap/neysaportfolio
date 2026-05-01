@@ -1,44 +1,36 @@
 'use strict';
-// Prism swipe + live drag — does not touch theme code
-const prism = document.getElementById("projectPrism");
-const stage = document.querySelector(".prism-stage");
 
-if (prism && stage) {
+document.addEventListener("DOMContentLoaded", () => {
+  // Prism swipe + live drag
+  const prism = document.getElementById("projectPrism");
+  const stage = document.querySelector(".prism-stage");
+
+  if (!prism || !stage) return;
+
   let rotationStep = 3;
   let startX = 0;
   let currentDrag = 0;
   let isDragging = false;
+  let moved = false;
 
   const anglePerSlide = 120;
   const startTilt = 0;
   const swipeThreshold = 50;
-  const dragSensitivity = 0.28; // higher = rotates more while dragging
+  const dragSensitivity = 0.28;
 
-  
   function setPrismRotation(extraDragAngle = 0) {
-  const angle = rotationStep * anglePerSlide + startTilt + extraDragAngle;
-
-  // Normalize active face: 0, 1, or 2
-  const active = ((rotationStep % 3) + 3) % 3;
-
-  // Adjust these numbers until each face sits centered
-  const offsets = [-200, 100, 100];
-
-  prism.style.transform = `
-    translateX(${offsets[active]}px)
-    rotateY(${angle}deg)
-  `;
-}
+    const angle = rotationStep * anglePerSlide + startTilt + extraDragAngle;
+    prism.style.transform = `rotateY(${angle}deg)`;
+  }
 
   setPrismRotation();
 
   stage.addEventListener("pointerdown", (e) => {
     isDragging = true;
+    moved = false;
     startX = e.clientX;
     currentDrag = 0;
-
-    stage.setPointerCapture?.(e.pointerId);
-    prism.style.transition = "none"; // live movement, no lag
+    prism.style.transition = "none";
   });
 
   stage.addEventListener("pointermove", (e) => {
@@ -46,9 +38,11 @@ if (prism && stage) {
 
     currentDrag = e.clientX - startX;
 
-    // negative drag = left, positive drag = right
-    const liveAngle = currentDrag * dragSensitivity;
-    setPrismRotation(liveAngle);
+    if (Math.abs(currentDrag) > 8) {
+      moved = true;
+    }
+
+    setPrismRotation(currentDrag * dragSensitivity);
   });
 
   document.addEventListener("pointerup", () => {
@@ -75,7 +69,19 @@ if (prism && stage) {
     setPrismRotation();
     isDragging = false;
   });
-}
+
+  // Link taps work, but swipes do not accidentally click
+  document.querySelectorAll(".prism-link").forEach((link) => {
+    link.addEventListener("click", (e) => {
+      if (moved) {
+        e.preventDefault();
+      }
+    });
+  });
+});
+
+
+
 document.addEventListener('DOMContentLoaded', () => {
   // card click handlers — only attach if elements exist on this page
   const attachClick = (id, href) => {

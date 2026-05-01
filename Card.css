@@ -64,6 +64,17 @@
   text-decoration: underline;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
+#nutrition-project:target, #llm-project:target, #book-recommendation-project:target {
+  box-shadow:
+    0 0 20px var(--accent),
+    0 0 40px var(--accent-2);
+  transform: scale(1.02);
+}
+
 .badge-3d{
   --size: 140px;
   --rim: rgba(255,255,255,.75);

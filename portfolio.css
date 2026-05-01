@@ -527,14 +527,13 @@ footer {
   0%, 100% { translate: 0 0; }
   50% { translate: 0 -14px; }
 }
- 
+
 /* ===== PRISM FACES ===== */
 .prism-face {
   position: absolute;
   width: 100%;
   height: 100%;
   overflow: hidden;
-  object-fit: cover;
 
   border: 2px solid var(--accent);
   border-radius: 14px;
@@ -545,10 +544,10 @@ footer {
 
   backface-visibility: visible;
   transform-style: preserve-3d;
-  pointer-events: none;
-  
+  pointer-events: auto;
 }
 
+/* image should not block swipe */
 .prism-face img {
   width: 100%;
   height: 100%;
@@ -556,12 +555,12 @@ footer {
   pointer-events: none;
 }
 
-/* Better balanced 3-sided prism */
+/* 3 prism planes */
 .face-1 { transform: rotateY(0deg) translateZ(210px); }
 .face-2 { transform: rotateY(120deg) translateZ(210px); }
 .face-3 { transform: rotateY(240deg) translateZ(210px); }
 
-/* ===== LABEL ===== */
+/* label overlay */
 .prism-face span {
   position: absolute;
   left: 0;
@@ -569,20 +568,36 @@ footer {
   bottom: 0;
 
   padding: 14px;
-  color: #fff;
   font-size: 24px;
   text-shadow: 0 2px 8px #000;
   background: linear-gradient(transparent, rgba(0,0,0,.85));
 
-  pointer-events: none;
+  pointer-events: auto;
 }
 
-/* ===== REMOVE OLD BUTTONS ===== */
+/* only this text is clickable */
+.prism-link {
+  pointer-events: auto;
+  color: #fff;
+  text-decoration: none;
+  cursor: pointer;
+  position: relative;
+  z-index: 10;
+}
+
+.prism-link:hover {
+  text-decoration: underline;
+  text-shadow:
+    0 0 8px var(--accent),
+    0 0 16px var(--accent-2);
+}
+
+/* remove old buttons */
 .prism-btn {
   display: none !important;
 }
 
-/* ===== MOBILE ===== */
+/* mobile */
 @media (max-width: 640px) {
   .prism-stage {
     height: 420px;
@@ -594,6 +609,9 @@ footer {
     height: 230px;
   }
 
+  .face-1 { transform: rotateY(0deg) translateZ(160px); }
+  .face-2 { transform: rotateY(120deg) translateZ(160px); }
+  .face-3 { transform: rotateY(240deg) translateZ(160px); }
 
   .prism-face span {
     font-size: 20px;
